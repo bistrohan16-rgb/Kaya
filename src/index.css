@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode (default) */
+    --bg: #080C08;
+    --surface: #0F140F;
+    --card: #161D16;
+    --card-hover: #1D261D;
+    --border: #252F25;
+    --accent: #1B7A4A;
+    --accent-light: #22A05E;
+    --text: #F4F7F4;
+    --text-60: rgba(244,247,244,0.60);
+    --text-35: rgba(244,247,244,0.35);
+    --text-20: rgba(244,247,244,0.20);
+  }
+  :root[data-theme="light"] {
+    --bg: #F7FAF7;
+    --surface: #FFFFFF;
+    --card: #F0F5F0;
+    --card-hover: #E8F0E8;
+    --border: #D4E2D4;
+    --accent: #1B7A4A;
+    --accent-light: #22A05E;
+    --text: #0A120A;
+    --text-60: rgba(10,18,10,0.60);
+    --text-35: rgba(10,18,10,0.35);
+    --text-20: rgba(10,18,10,0.20);
+  }
+  * { border-color: var(--border); }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+}
+
+@layer components {
+  .k-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    @apply rounded-2xl;
+  }
+  .k-card-hover {
+    transition: all 0.2s;
+  }
+  .k-card-hover:hover {
+    background: var(--card-hover);
+    border-color: rgba(27,122,74,0.3);
+  }
+  .k-surface { background: var(--surface); }
+  .k-bg { background: var(--bg); }
+  .k-text { color: var(--text); }
+  .k-text-60 { color: var(--text-60); }
+  .k-text-35 { color: var(--text-35); }
+  .k-text-20 { color: var(--text-20); }
+  .k-border { border-color: var(--border); }
+  .k-accent { color: var(--accent); }
+  .k-accent-bg { background: var(--accent); }
+  .k-label {
+    color: var(--accent);
+    @apply text-xs font-body font-semibold tracking-widest uppercase;
+  }
+  /* Alias for compatibility */
+  .kaya-label { color: var(--accent); @apply text-xs font-body font-semibold tracking-widest uppercase; }
+  .strix-label { color: var(--accent); @apply text-xs font-body font-semibold tracking-widest uppercase; }
+  .ayu-label { color: var(--accent); @apply text-xs font-body font-semibold tracking-widest uppercase; }
+
+  /* Coach specific */
+  .coach-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    @apply rounded-2xl;
+  }
+}
+
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.safe-area-pb { padding-bottom: env(safe-area-inset-bottom); }
+
+.k-ring { filter: drop-shadow(0 0 8px rgba(27,122,74,0.4)); }
+.kaya-ring { filter: drop-shadow(0 0 8px rgba(27,122,74,0.4)); }
+.ayu-ring { filter: drop-shadow(0 0 8px rgba(27,122,74,0.4)); }
+.strix-ring { filter: drop-shadow(0 0 8px rgba(27,122,74,0.4)); }
+
+@keyframes kaya-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(0.96); }
+}
+.owl-pulse { animation: kaya-pulse 3s ease-in-out infinite; }
